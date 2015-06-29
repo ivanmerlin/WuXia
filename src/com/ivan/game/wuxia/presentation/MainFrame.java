@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 
 import com.ivan.game.wuxia.model.DataHelper;
 import com.ivan.game.wuxia.model.Role;
+import com.ivan.game.wuxia.presentation.place.TavernPanel;
 
 public class MainFrame extends JFrame{
 	/*
@@ -142,6 +143,25 @@ public class MainFrame extends JFrame{
 				   datahelper.open();
 				   Role role=datahelper.getRole();
 				   System.out.println(role.getName()+" "+role.getGender());
+				  
+				   //载入
+				   
+				   System.out.println("place="+datahelper.getPlace());
+				   container.add(new ChangAnScene(),"changAn");
+				   container.add(new TavernPanel(),"tavern");
+				   
+				   
+				   //*****
+				   String place;
+				   if(datahelper.getPlace().equals("street")){
+					   System.out.println("get here");
+					   place=datahelper.getCity();
+				   }else{
+					   place=datahelper.getPlace();
+				   }
+				   System.out.println("actualplace="+place);
+				   cl.show(container, place);
+				   
 				   
 			   }	
 			 //鼠标点击事件

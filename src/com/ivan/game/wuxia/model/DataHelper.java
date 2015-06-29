@@ -16,6 +16,8 @@ public class DataHelper {
 	Role role;
 	Bag bag;
 	Date date;
+	String place;
+	String city;
 	private static DataHelper single=null;
 	private DataHelper(){}
 	
@@ -32,7 +34,7 @@ public class DataHelper {
 	
 	
 	
-	public void save( ){   
+	public void save(){   
         FileOutputStream fos = null;  
         ObjectOutputStream oos = null;  
         File f = new File(path);  
@@ -42,6 +44,9 @@ public class DataHelper {
             oos.writeObject(role);    //括号内参数为要保存java对象  
             oos.writeObject(bag);
             oos.writeObject(date);
+            oos.writeObject(city);
+            oos.writeObject(place);
+            
         } catch (FileNotFoundException e) {  
             e.printStackTrace();  
         } catch (IOException e) {  
@@ -66,8 +71,14 @@ public class DataHelper {
             role= (Role)ois.readObject();//强制类型转换  
             bag=(Bag) ois.readObject();
             date=  ( Date)ois.readObject();
+            city=(String) ois.readObject();
+            place=(String) ois.readObject();
+            
+            
             System.out.println(date.getMonthStr()+date.getDayStr());
             System.out.println(bag.getMoney());
+            System.out.println(city+" "+place);
+            
             
            // myPanel.repaint();  
               
@@ -129,6 +140,34 @@ public class DataHelper {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+
+
+
+	public String getPlace() {
+		return place;
+	}
+
+
+
+
+	public void setPlace(String place) {
+		this.place = place;
+	}
+
+
+
+
+	public String getCity() {
+		return city;
+	}
+
+
+
+
+	public void setCity(String city) {
+		this.city = city;
 	}
     
     

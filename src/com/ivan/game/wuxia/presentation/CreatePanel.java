@@ -131,10 +131,11 @@ public class CreatePanel extends JPanel{
 				container=MainFrame.getInstance().getContentPane();
 				
 				cl=(CardLayout) container.getLayout();
+				 
+				container.add(new ChangAnScene(),"changAn");
 				
-				ChangAnScene changAnPanel=new ChangAnScene();
-				container.add(changAnPanel,"changAn");
-				
+				datahelper.setCity("changAn");
+				datahelper.setPlace("street");
 				//cl.next(container);
 				cl.show(container,"changAn");
 				

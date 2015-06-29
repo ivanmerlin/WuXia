@@ -22,7 +22,7 @@ import com.ivan.game.wuxia.presentation.button.TavernPlaceButton;
 public class ScenePanel  extends JPanel{
 	ImageIcon backIcon;
 	ImageIcon headIcon;
-	DataHelper datahelper=DataHelper.getInstance();
+	protected DataHelper datahelper=DataHelper.getInstance();
 	Role role;
 	Bag bag;
 	Date date;
@@ -35,6 +35,9 @@ public class ScenePanel  extends JPanel{
 	LoadDataButton loadDataButton=new LoadDataButton();
 	Font font=new Font("华文行楷",Font.BOLD,28);
 	JButton[] placeButton;
+	
+	protected String city;
+	protected String place;
 	public ScenePanel(String backPath){
 		super();
 		role=datahelper.getRole();
@@ -45,19 +48,19 @@ public class ScenePanel  extends JPanel{
 		//*****************************
 		//正式使用的代码
 		//******************************
-//		if(role.getGender()==1){
-//			headPath="image/femaleRole.png";
-//		}else{
-//			headPath="image/maleRole.png";
-//		}
+		if(role.getGender()==1){
+			headPath="image/femaleRole.png";
+		}else{
+			headPath="image/maleRole.png";
+		}
 		//***********************
 		//********************************
 		//测试使用的代码
-		headPath="image/femaleRole.png";
-		 
-		role=new Role("阿宁",1,1);
-		bag=new Bag();
-		date=new Date();
+//		headPath="image/femaleRole.png";
+//		 
+//		role=new Role("阿宁",1,1);
+//		bag=new Bag();
+//		date=new Date();
 		//*********************		
 				
 		headIcon=new ImageIcon(headPath);
@@ -113,27 +116,27 @@ public class ScenePanel  extends JPanel{
 	    nameLabel.setLocation(320,14);
 		nameLabel.setSize(240,30);
 		this.add(nameLabel);
-		
+//saveData		
 		saveDataButton.setSize(230, 47);
 		saveDataButton.setLocation(10,740);
 		this.add(saveDataButton);
 		
-		
+//loadData		
 		loadDataButton.setSize(230, 47);
 		loadDataButton.setLocation(745,740);
 		this.add(loadDataButton);
 		
-		TavernPlaceButton taverbutton=new TavernPlaceButton();
-		taverbutton.setSize(66,286);
-		taverbutton.setLocation(860,380);
-		this.add(taverbutton);
-		
-		
-		ResidencePlaceButton residenceButton=new ResidencePlaceButton();
-		residenceButton.setSize(66,286);
-		residenceButton.setLocation(750,380);
-		this.add(residenceButton);
-		
+//		TavernPlaceButton taverbutton=new TavernPlaceButton();
+//		taverbutton.setSize(66,286);
+//		taverbutton.setLocation(860,380);
+//		this.add(taverbutton);
+//		
+//		
+//		ResidencePlaceButton residenceButton=new ResidencePlaceButton();
+//		residenceButton.setSize(66,286);
+//		residenceButton.setLocation(750,380);
+//		this.add(residenceButton);
+//		
 		
 		
 		
@@ -153,6 +156,12 @@ public class ScenePanel  extends JPanel{
 		}
 	}
 	
+	public void setLocale(){
+		datahelper.setCity(city);
+		datahelper.setPlace(place);
+		 
+		
+	}
 	
 	
 	public static void main(String[] args) {
